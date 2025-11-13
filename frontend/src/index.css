@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gradient-to-br from-yellow-100 via-pink-100 to-teal-100 min-h-screen;
+  font-family: "Inter", sans-serif;
+}
