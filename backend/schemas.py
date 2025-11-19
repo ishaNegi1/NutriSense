@@ -2,7 +2,6 @@ from pydantic import BaseModel, EmailStr, Field
 from typing import Optional, List
 from datetime import datetime
 
-# ---------- Auth ----------
 class SignupIn(BaseModel):
     name: str
     email: EmailStr
@@ -41,3 +40,18 @@ class HistoryItem(BaseModel):
 
 class HistoryList(BaseModel):
     items: List[HistoryItem]
+
+class WellnessInput(BaseModel):
+    age: int
+    height_cm: float
+    disease: str
+    breakfast: str
+    lunch: str
+    dinner: str
+    snacks: str
+    sleep_hours: float
+    exercise_hours: float
+    water_intake_liters: float
+    mood: str
+    notes: str = ""
+
