@@ -59,6 +59,12 @@ export default function Navbar() {
             >
               History
             </Link>
+            <Link 
+              to="/daily-wellness" 
+              className="text-gray-700 hover:text-green-700 transition px-2 py-1 rounded"
+            >
+              Daily Wellness
+            </Link>
           </div>
         )}
       </div>
