@@ -61,7 +61,7 @@ export default function Navbar() {
             </Link>
             <Link 
               to="/daily-wellness" 
-              className="hover:text-green-700"
+              className="text-gray-700 hover:text-green-700 transition px-2 py-1 rounded"
             >
               Daily Wellness
             </Link>
