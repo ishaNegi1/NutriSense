@@ -1,7 +1,7 @@
 import api from "./client";
 
 export const submitDailyWellness = (data) =>
-  api.post("/api/wellness", data);
+  api.post("/wellness/predict", data);
 
 export const getWellnessHistory = () =>
-  api.get("/api/wellness/history");
+  api.get("/wellness/history");
