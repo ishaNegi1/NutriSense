@@ -7,9 +7,12 @@ load_dotenv()
 MONGODB_URI = os.getenv("MONGODB_URI")
 DB_NAME = os.getenv("DB_NAME", "nutrisense")
 
-_client = AsyncIOMotorClient(MONGODB_URI)
-_db = _client[DB_NAME]
+client = AsyncIOMotorClient(MONGODB_URI)
+db = client[DB_NAME]
+
+users_collection = db["users"]
+histories_collection = db["histories"]
+wellness_collection = db["wellness_logs"]
 
 def get_db():
-    return _db
-
+    return db
