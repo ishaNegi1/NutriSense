@@ -41,3 +41,28 @@ class HistoryItem(BaseModel):
 
 class HistoryList(BaseModel):
     items: List[HistoryItem]
+
+# ---------- Wellness Tracking ----------
+
+class WellnessIn(BaseModel):
+    age: int
+    height_cm: float
+    disease: str
+    breakfast: str
+    lunch: str
+    dinner: str
+    snacks: str
+    sleep_hours: float
+    sleep_start: str
+    sleep_end: str
+    exercise_hours: float
+    water_intake_liters: float
+    mood: str
+    notes: Optional[str] = ""
+
+class WellnessOut(BaseModel):
+    wellness_score: float
+    prediction: str
+    recommendations: List[str]
+    created_at: datetime
+
