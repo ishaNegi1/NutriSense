@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import DailyWellness from "./pages/DailyWellness";
 import ProtectedRoute from "./components/protectedRoute"
 import Home from "./pages/Home";
+import DailyDashboardPage from "./pages/DailyDashboardPage";
 
 function App() {
   return (
@@ -38,6 +39,15 @@ function App() {
           element={
             <ProtectedRoute>
               <DailyWellness />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/daily-dashboard"
+          element={
+            <ProtectedRoute>
+              <DailyDashboardPage />
             </ProtectedRoute>
           }
         />
