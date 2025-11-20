@@ -131,7 +131,15 @@ async def predict_wellness(data: WellnessInput, user=Depends(get_current_user)):
     features = np.array(convert_to_features(data)).reshape(1, -1)
 
     score = float(score_model.predict(features)[0])
-    category = str(class_model.predict(features)[0])
+    def wellness_category(score):
+     if score >= 75:
+        return "Healthy"
+     elif score >= 50:
+        return "Moderate"
+     return "Poor"
+
+    category = wellness_category(score)
+
 
     recommendations = generate_recommendations(data, score, category)
 
