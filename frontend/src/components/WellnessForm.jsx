@@ -3,38 +3,21 @@ import { submitDailyWellness } from "../api/wellnessApi";
 import WellnessResult from "./WellnessResult";
 
 export default function WellnessForm() {
-  // const [formData, setFormData] = useState({
-  //   age: "",
-  //   height_cm: "",
-  //   disease: "",
-  //   breakfast: "",
-  //   lunch: "",
-  //   dinner: "",
-  //   snacks: "",
-  //   sleep_hours: "",
-  //   sleep_start: "",
-  //   sleep_end: "",
-  //   exercise_hours: "",
-  //   water_intake_liters: "",
-  //   mood: "",
-  //   notes: "",
-  // });
-
   const [formData, setFormData] = useState({
-    age: 10,
-    height_cm: 125,
-    disease: "none",
-    breakfast: "milk banana oats",
-    lunch: "dal rice",
-    dinner: "roti sabzi",
-    snacks: "fruit",
-    sleep_hours: 8,
-    sleep_start: "22:00",
-    sleep_end: "06:00",
-    exercise_hours: 1,
-    water_intake_liters: 2,
-    mood: "happy",
-    notes: "test mode default values",
+    age: "",
+    height_cm: "",
+    disease: "",
+    breakfast: "",
+    lunch: "",
+    dinner: "",
+    snacks: "",
+    sleep_hours: "",
+    sleep_start: "",
+    sleep_end: "",
+    exercise_hours: "",
+    water_intake_liters: "",
+    mood: "",
+    notes: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -55,7 +38,17 @@ export default function WellnessForm() {
     setResult(null);
 
     try {
-      const res = await submitDailyWellness(formData);
+      // Convert numeric fields BEFORE sending to backend
+      const numericData = {
+        ...formData,
+        age: Number(formData.age),
+        height_cm: Number(formData.height_cm),
+        sleep_hours: Number(formData.sleep_hours),
+        exercise_hours: Number(formData.exercise_hours),
+        water_intake_liters: Number(formData.water_intake_liters),
+      };
+
+      const res = await submitDailyWellness(numericData);
       setResult(res.data);
     } catch (err) {
       console.error(err);
@@ -86,7 +79,7 @@ export default function WellnessForm() {
             />
           ) : (
             <input
-              type="text"
+              type={key.includes("hours") || key.includes("liters") ? "number" : "text"}
               name={key}
               value={formData[key]}
               onChange={handleChange}
